@@ -6,11 +6,11 @@
  */
 /*
 京东手机狂欢城活动，每日可获得20+以上京豆（其中20京豆是往期奖励，需第一天参加活动后，第二天才能拿到）
-活动时间: 2021-4-1至2021-4-20
+活动时间: 2021-5-24至2021-6-20
 活动入口：暂无 [活动地址](https://carnivalcity.m.jd.com/)
 
 往期奖励：
-a、 4月1日-4月20日期间第1名可获得实物手机一部，4月1日/16日/17日/18日/19日/20日 第1名/418名获得手机。
+a、第1名、第618名可获得实物手机一部
 b、 每日第2-10000名，可获得50个京豆
 c、 每日第10001-30000名可获得20个京豆
 d、 30000名之外，0京豆
@@ -151,10 +151,10 @@ async function JD818() {
 }
 async function doHotProducttask() {
   $.hotProductList = $.hotProductList.filter(v => !!v && v['status'] === "1");
-  if ($.hotProductList && $.hotProductList.length) console.log(`开始 【浏览热销手机产品】任务`)
+  if ($.hotProductList && $.hotProductList.length) console.log(`开始 【浏览热销手机产品】任务,需等待6秒`)
   for (let item of $.hotProductList) {
     await doBrowse(item['id'], "", "hot", "browse", "browseHotSku");
-    await $.wait(200);
+    await $.wait(1000 * 6);
     if ($.browseId) {
       await getBrowsePrize($.browseId)
     }
@@ -242,7 +242,7 @@ function brandTaskInfo(brandId) {
               console.log(`\n开始做 品牌手机 【${data['data']['brandName']}】 任务`)
               console.log(`开始浏览 1-F 单品区 任务 ${sku['name']}`);
               await doBrowse(sku['id'], brandId, "brand", "presell", "browseSku");
-              await $.wait(200);
+              await $.wait(1000 * 6);
               if ($.browseId) await getBrowsePrize($.browseId, brandId);
             }
             for (let sku of $.shopTask.filter(vo => !!vo && vo['status'] !== '4')){
@@ -608,7 +608,7 @@ function updateShareCodesCDN(url = 'https://cdn.jsdelivr.net/gh/gitupdate/update
 function readShareCode() {
   console.log(`开始`)
   return new Promise(async resolve => {
-    $.get({url: `http://jd.turinglabs.net/api/v2/jd/carnivalcity/read/20/`, 'timeout': 20000}, (err, resp, data) => {
+    $.get({url: `http://share.turinglabs.net/api/v3/carnivalcity/query/20/`, 'timeout': 20000}, (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)

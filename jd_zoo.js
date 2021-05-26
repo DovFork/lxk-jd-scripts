@@ -4,7 +4,7 @@ author:star
 解密参考自：https://github.com/yangtingxiao/QuantumultX/blob/master/scripts/jd/jd_zoo.js
 活动入口：京东APP-》搜索 玩一玩-》瓜分20亿
 邀请好友助力：内部账号自行互助(排名靠前账号得到的机会多)
-PK互助：内部账号自行互助(排名靠前账号得到的机会多)
+PK互助：内部账号自行互助(排名靠前账号得到的机会多),多余的助力次数会默认助力作者内置助力码
 小程序任务：已完成
 地图任务：未完成，后期添加
 金融APP任务：未完成，后期添加
@@ -14,17 +14,17 @@ PK互助：内部账号自行互助(排名靠前账号得到的机会多)
 ===================quantumultx================
 [task_local]
 #618动物联萌
-13 0-23/2 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_zoo.js, tag=618动物联萌, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
+13 * * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_zoo.js, tag=618动物联萌, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
 
 =====================Loon================
 [Script]
-cron "13 0-23/2 * * *" script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_zoo.js, tag=618动物联萌
+cron "13 * * * *" script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_zoo.js, tag=618动物联萌
 
 ====================Surge================
-618动物联萌 = type=cron,cronexp="13 0-23/2 * * *",wake-system=1,timeout=3600,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_zoo.js
+618动物联萌 = type=cron,cronexp="13 * * * *",wake-system=1,timeout=3600,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_zoo.js
 
 ============小火箭=========
-618动物联萌 = type=cron,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_zoo.js, cronexpr="13 0-23/2 * * *", timeout=3600, enable=true
+618动物联萌 = type=cron,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_zoo.js, cronexpr="13 * * * *", timeout=3600, enable=true
  */
 const $ = new Env('618动物联萌');
 const notify = $.isNode() ? require('./sendNotify') : '';
@@ -37,7 +37,11 @@ $.cookie = '';
 $.inviteList = [];
 $.pkInviteList = [];
 $.secretpInfo = {};
-$.innerPkInviteList = [];
+$.innerPkInviteList = [
+    'sSKNX-MpqKOJsNu-ys_QB8uQqFkCdEeVDMGDHZg04xSunvZqdHKnylpSunootOm02pDQ',
+    'sSKNX-MpqKOJsNv74MOnRO1-y24JzNJfEGle1Ooa7gtNStMf5n0b6pOxJ2-G',
+    'sSKNX-MpqKOUsPHLzP-MQ8sgU5F_0euaHLLGd6Y_Ng7Xhu2RkM0EMvUKJQ',
+];
 $.allshopIdList = [1000004064,1000332823,1000081945,1000009821,1000000182,1000096602,1000100813,1000003263,58463,1000014803,1000001521,59809, 1000310642,1000004065,39348,24299,1000115184,1000002662, 1000014988,34239,874707,10370169,1000000706,712065, 58366,1000001782,1000000488,1000001927,1000094142,182588];
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
@@ -57,7 +61,7 @@ if ($.isNode()) {
   }
   console.log('活动入口：京东APP-》搜索 玩一玩-》瓜分20亿\n' +
       '邀请好友助力：内部账号自行互助(排名靠前账号得到的机会多)\n' +
-      'PK互助：内部账号自行互助(排名靠前账号得到的机会多),多余的助力次数会默认助力内置助力码\n' +
+      'PK互助：内部账号自行互助(排名靠前账号得到的机会多),多余的助力次数会默认助力作者内置助力码\n' +
       '小程序任务：已完成\n' +
       '地图任务：未完成，后期添加\n' +
       '金融APP任务：未完成，后期添加\n' +

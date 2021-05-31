@@ -88,7 +88,7 @@ const JD_API_HOST = 'https://lkyl.dianpusoft.cn/api';
       await smallHome();
     }
   }
-  await updateInviteCodeCDN('https://cdn.jsdelivr.net/gh/shuyeshuye/updateTeam@master/jd_updateSmallHomeInviteCode.json');
+  await updateInviteCodeCDN('https://raw.githubusercontent.com/shuyeshuye/updateTeam/master/jd_updateSmallHomeInviteCode.json');
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       cookie = cookiesArr[i];
@@ -787,7 +787,7 @@ function login(userName) {
     })
   })
 }
-function updateInviteCode(url = 'https://cdn.jsdelivr.net/gh/wuzhi-docker1/updateTeam@master/shareCodes/jd_updateSmallHomeInviteCode.json') {
+function updateInviteCode(url = 'https://raw.githubusercontent.com/wuzhi-docker1/updateTeam/master/shareCodes/jd_updateSmallHomeInviteCode.json') {
   return new Promise(resolve => {
     $.get({url,headers:{
         "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"

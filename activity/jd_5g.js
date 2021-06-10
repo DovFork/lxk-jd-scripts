@@ -8,17 +8,17 @@
 ============Quantumultx===============
 [task_local]
 #5G狂欢城
-0 0,6,12,18 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_5g.js, tag=5G狂欢城, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
+0 0,6,12,18 * * * jd_5g.js, tag=5G狂欢城, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
 
 ================Loon==============
 [Script]
-cron "0 0,6,12,18 * * *" script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_5g.js, tag=5G狂欢城
+cron "0 0,6,12,18 * * *" script-path=jd_5g.js, tag=5G狂欢城
 
 ===============Surge=================
-5G狂欢城 = type=cron,cronexp="0 0,6,12,18 * * *",wake-system=1,timeout=3600,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_5g.js
+5G狂欢城 = type=cron,cronexp="0 0,6,12,18 * * *",wake-system=1,timeout=3600,script-path=jd_5g.js
 
 ============小火箭=========
-5G狂欢城 = type=cron,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_5g.js, cronexpr="0 0,6,12,18 * * *", timeout=3600, enable=true
+5G狂欢城 = type=cron,script-path=jd_5g.js, cronexpr="0 0,6,12,18 * * *", timeout=3600, enable=true
  */
 const $ = new Env('5G狂欢城');
 
@@ -744,7 +744,7 @@ function jsonParse(str) {
     }
   }
 }
-function updateShareCodes(url = 'https://raw.githubusercontent.com/gitupdate/updateTeam/master/shareCodes/jd_818.json') {
+function updateShareCodes(url = 'https://cdn.jsdelivr.net/gh/gitupdate/updateTeam@master/shareCodes/jd_818.json') {
   return new Promise(resolve => {
     $.get({url,
       headers:{"User-Agent": $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT : (require('./USER_AGENTS').USER_AGENT)) : ($.getdata('JDUA') ? $.getdata('JDUA') : "jdapp;iPhone;9.4.4;14.3;network/4g;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1")}

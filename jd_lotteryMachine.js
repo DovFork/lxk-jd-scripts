@@ -250,7 +250,7 @@ function updateShareCodes(url = 'https://raw.githubusercontent.com/yangtingxiao/
     })
   })
 }
-function updateShareCodesCDN(url = 'https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/jd_lotteryMachine.js') {
+function updateShareCodesCDN(url = 'https://cdn.jsdelivr.net/gh/yangtingxiao/QuantumultX@master/scripts/jd/jd_lotteryMachine.js') {
   return new Promise(async resolve => {
     $.get({url: `${url}?${Date.now()}`, timeout: 10000}, async (err, resp, data) => {
       try {

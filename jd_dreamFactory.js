@@ -11,17 +11,17 @@
 ============Quantumultx===============
 [task_local]
 #京喜工厂
-10 * * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_dreamFactory.js, tag=京喜工厂, img-url=https://github.com/58xinian/icon/raw/master/jdgc.png, enabled=true
+10 * * * * jd_dreamFactory.js, tag=京喜工厂, img-url=https://github.com/58xinian/icon/raw/master/jdgc.png, enabled=true
 
 ================Loon==============
 [Script]
-cron "10 * * * *" script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_dreamFactory.js,tag=京喜工厂
+cron "10 * * * *" script-path=jd_dreamFactory.js,tag=京喜工厂
 
 ===============Surge=================
-京喜工厂 = type=cron,cronexp="10 * * * *",wake-system=1,timeout=3600,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_dreamFactory.js
+京喜工厂 = type=cron,cronexp="10 * * * *",wake-system=1,timeout=3600,script-path=jd_dreamFactory.js
 
 ============小火箭=========
-京喜工厂 = type=cron,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_dreamFactory.js, cronexpr="10 * * * *", timeout=3600, enable=true
+京喜工厂 = type=cron,script-path=jd_dreamFactory.js, cronexpr="10 * * * *", timeout=3600, enable=true
 
  */
 // prettier-ignore
@@ -973,13 +973,13 @@ async function tuanActivity() {
 }
 async function joinLeaderTuan() {
   let res = await updateTuanIdsCDN(), res2 = await updateTuanIdsCDN("http://cdn.annnibb.me/factory.json")
-  if (!res) res = await updateTuanIdsCDN('https://raw.githubusercontent.com/gitupdate/updateTeam/master/shareCodes/jd_updateFactoryTuanId.json');
+  if (!res) res = await updateTuanIdsCDN('https://cdn.jsdelivr.net/gh/gitupdate/updateTeam@master/shareCodes/jd_updateFactoryTuanId.json');
   $.authorTuanIds = [...(res && res.tuanIds || []),...(res2 && res2.tuanIds || [])]
   if ($.authorTuanIds && $.authorTuanIds.length) {
     for (let tuanId of $.authorTuanIds) {
       if (!tuanId) continue
       if (!$.canHelp) break;
-      console.log(`\n账号${$.UserName} 参加作者lxk0301的团 【${tuanId}】`);
+      console.log(`\n账号${$.UserName} 参加作者的团 【${tuanId}】`);
       await JoinTuan(tuanId);
       await $.wait(1000);
     }
@@ -1358,7 +1358,7 @@ function requireConfig() {
         console.log(`拼团活动ID: 获取成功 ${tuanActiveId}\n`)
       } else {
         if (!$.tuanConfigs) {
-          await updateTuanIdsCDN('https://raw.githubusercontent.com/gitupdate/updateTeam/master/shareCodes/jd_updateFactoryTuanId.json');
+          await updateTuanIdsCDN('https://cdn.jsdelivr.net/gh/gitupdate/updateTeam@master/shareCodes/jd_updateFactoryTuanId.json');
           if ($.tuanConfigs && $.tuanConfigs['tuanActiveId']) {
             tuanActiveId = $.tuanConfigs['tuanActiveId'];
             console.log(`拼团活动ID: 获取成功 ${tuanActiveId}\n`)
